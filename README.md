@@ -1,4 +1,4 @@
-# A simple MVC using OOP PHP
+# <h1 align="center"> A simple MVC using OOP PHP</h1>
 
 
 ## Step 01
@@ -27,7 +27,7 @@ $ composer dump-autoload -o
 Go to the project directory and Run this command
 
 ```bash
-$cd public
+$ cd public
 $ php -S localhost:port
 ```
 
