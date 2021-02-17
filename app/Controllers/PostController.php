@@ -17,7 +17,7 @@ class PostController extends Controller
     public function store()
     {
         self::methodMustBe('POST');
-        
+
         $data = array();
         $data['body'] = self::sanitize($_POST['body']);
 
