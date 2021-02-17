@@ -3,14 +3,14 @@
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-8 shadow">
                 <div class="card border-0">
-                    <div class="card-header">
+                    <div class="card-header border-0">
                         <h4 class="text-center text-secondary font-weight-bold">Ninja To-Do-List</h4>
                     </div>
-                    <div class="card-body p-lg-5 bg-white">
+                    <div class="card-body p-lg-4 bg-white border-0">
 
                         <?php include_once dirname(__DIR__)."/ins/card-form.php" ?>
 
-                        <div class="py-2">
+                        <div class="">
                             <div class="row justify-content-between">
                                 <?php foreach ($posts as $post){ ?>
                                     <div class="col-1 py-2">
@@ -34,7 +34,7 @@
                                         <form action="/edit" method="post">
                                             <input type="hidden" name="id" value="<?php echo $post['id'] ; ?>">
                                             <div class="form-group">
-                                                <input type="text" class=" form-control" name="body" id="body" value="<?php echo $post['body'] ?>" autofocus>
+                                                <input type="text" class="form-control" name="body" id="body" value="<?php echo $post['body'] ?>" autofocus>
                                             </div>
                                             <button type="submit" class="d-none"></button>
                                         </form>

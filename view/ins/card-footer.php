@@ -1,4 +1,4 @@
-<div class="card-footer py-4">
+<div class="card-footer border-0 py-4">
     <?php if($total_post > 0){ ?>
         <div class="row justify-content-between">
             <div class="col-3"><?php {echo $item > 1 ? $item . ' Items left' : $item. ' Item left'; } ?></div>
