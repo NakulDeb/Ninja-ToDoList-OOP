@@ -11,4 +11,13 @@ Fill all required credential on .env
 
 ## Step 03
 
+Run this command [Composer](https://getcomposer.org/):
+
+```bash
+$ composer dump-autoload -o
+```
+
+
+
+
 
