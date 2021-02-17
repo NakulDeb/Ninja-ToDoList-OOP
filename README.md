@@ -11,10 +11,24 @@ Fill all required credential on .env
 
 ## Step 03
 
-Run this command [Composer](https://getcomposer.org/):
+Import Database.
+
+
+## Step 04
+
+Go to the project directory and Run this command [Composer](https://getcomposer.org/):
 
 ```bash
 $ composer dump-autoload -o
+```
+
+## Step 05 and Final
+
+Go to the project directory and Run this command
+
+```bash
+$cd public
+$ php -S localhost:port
 ```
 
 
