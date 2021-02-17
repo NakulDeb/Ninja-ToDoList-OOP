@@ -65,12 +65,12 @@ class Controller
 
 
 
-    
 
-    public static function checkMethod($method = "GET")
+
+    protected static function methodMustBe(string $method = 'GET')
     {
-        $method = strtoupper($method);
-        if($_SERVER['REQUEST_METHOD'] !== $method){
+        echo $method;
+        if($_SERVER['REQUEST_METHOD'] !== strtoupper($method)){
             echo '<pre>';
             print_r('POST method do not support Get Mothod...');
             exit();

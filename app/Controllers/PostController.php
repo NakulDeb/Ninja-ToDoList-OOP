@@ -16,7 +16,7 @@ class PostController extends Controller
 
     public function store()
     {
-        self::checkMethod('POST');
+        self::methodMustBe('POST');
         
         $data = array();
         $data['body'] = self::sanitize($_POST['body']);
@@ -32,7 +32,7 @@ class PostController extends Controller
 
     public function delete()
     {
-        self::checkMethod('POST');
+        self::methodMustBe('POST');
 
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
 
@@ -47,7 +47,7 @@ class PostController extends Controller
 
     public function activeOrDactive()
     {
-        self::checkMethod('POST');
+        self::methodMustBe('POST');
 
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
         $status = filter_var($_POST['status'], FILTER_SANITIZE_NUMBER_INT) ? 0 : 1;
@@ -63,7 +63,7 @@ class PostController extends Controller
 
     public function update()
     {
-        self::checkMethod('POST');
+        self::methodMustBe('POST');
 
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);;
         $body = self::sanitize($_POST['body']);
@@ -79,7 +79,7 @@ class PostController extends Controller
     
     public function clearCompleted()
     {
-        self::checkMethod('post');
+        self::methodMustBe('POST');
 
         $post = new Post();
         $posts = $post->delete("status = false");

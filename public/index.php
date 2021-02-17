@@ -10,45 +10,44 @@ use Nakul\Routers\Web as Router;
 use App\Controllers\HomeController;
 use App\Controllers\PostController;
 
-$web = new Router();
 
 
-$web->route("/", function (){
+Router::get("/", function (){
     $app = new HomeController();
     print_r($app->all());
 });
 
-$web->route("/create", function (){
+Router::post("/create", function (){
     $app = new PostController();
     $app->store();
 });
 
-$web->route("/edit", function (){
+Router::post("/edit", function (){
     $app = new PostController();
     $app->update();
 });
 
-$web->route("/delete", function (){
+Router::post("/delete", function (){
     $app = new PostController();
     $app->delete();
 });
 
-$web->route("/active-or-dactive", function (){
+Router::post("/active-or-dactive", function (){
     $app = new PostController();
     $app->activeOrDactive();
 });
 
-$web->route("/active", function (){
+Router::get("/active", function (){
     $app = new HomeController();
     print_r($app->active());
 });
 
-$web->route("/completed", function (){
+Router::get("/completed", function (){
     $app = new HomeController();
     print_r($app->completed());
 });
 
-$web->route("/clear-completed", function (){
+Router::post("/clear-completed", function (){
     $app = new PostController();
     print_r($app->clearCompleted());
 });
@@ -56,4 +55,4 @@ $web->route("/clear-completed", function (){
 
 
 $action = $_SERVER['REQUEST_URI'];
-$web->dispatch($action);
+Router::dispatch($action);

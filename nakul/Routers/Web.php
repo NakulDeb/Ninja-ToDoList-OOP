@@ -15,31 +15,40 @@ class Web
     }
 
 
-
-
-    function route($action, \Closure $callback)
+    static function get($action, \Closure $callback)
     {
+        global $routes;
         $action = trim($action, '/');
-        $this->routes[$action] = $callback;
+        $routes[$action] = $callback;
+    }
+
+
+    static function post($action, \Closure $callback)
+    {
+        global $routes;
+        $action = trim($action, '/');
+        $routes[$action] = $callback;
     }
 
 
     
 
-    function dispatch($action)
+    static function dispatch($action)
     {
+        global $routes;
         $action = trim($action, '/');
 
-        if (!array_key_exists($action, $this->routes)){
+        if (!array_key_exists($action, $routes)){
             echo "<pre>";
             print_r("Page Not Found || 404");
             echo "<pre>";
             exit();
         }
 
-        $callback = $this->routes[$action];
+        $callback = $routes[$action];
         call_user_func($callback);
     }
+
 
 }
 
