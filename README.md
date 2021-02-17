@@ -24,7 +24,7 @@ $ composer dump-autoload -o
 
 ## Step 05 and Final
 
-To serve the project go to the project directory and Run this command
+To serve this project go to the project directory and Run this command
 
 ```bash
 $ cd public
