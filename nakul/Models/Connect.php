@@ -12,6 +12,6 @@ trait Connect
         if($new_conn->connect_error){
             die('Db connection error ' . $new_conn->connect_error);
         }
-        $this->conn = $new_conn;
+        return $new_conn;
     }
 }

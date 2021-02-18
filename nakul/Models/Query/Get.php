@@ -10,7 +10,7 @@ trait Get
     {
         $result = $this->conn->query($query);
         if ($result === false) {
-            die('Shomthing worng ' . $query. ' ' . $this->conn->error);
+            die('Shomthing worng ...' . $query. ' ...' . $this->conn->error);
         }
         $data = array();
         while ($row = $result->fetch_assoc()){
@@ -20,15 +20,34 @@ trait Get
     }
 
 
-
-
-
-    public function get($items = "*", $condition = true)
+    protected function makingQuery($condition, $select, $count)
     {
-        $query = "SELECT  ". $items ." FROM $this->model WHERE ". $condition;
-        return $this->serveGet($query);
+        $conditionSets = array();
+        if($select === ['*'] || $select === []) $select =  '*';
+        else $select = "`".implode("`, `", $select)."`";
+
+        foreach($condition as $key => $value) {
+            $conditionSets[] = "`".$key . "` = '" . $value . "'";
+        }
+
+        $query = "SELECT ";
+        $query .= $count ? " COUNT(id) " : $select ;
+        $query .= " FROM $this->model WHERE ";
+        $query .=  empty($conditionSets) ? true : join(" AND ", $conditionSets);
+        return $query;
     }
 
+
+
+
+    public function get($condition = [], $select = ['*'], $count = false)
+    {
+        $query = $this->makingQuery($condition, $select, $count);
+
+        if($count) return $this->conn->query($query)->fetch_array()[0];
+
+        return $this->serveGet($query);
+    }
 
 
 
@@ -36,16 +55,5 @@ trait Get
     public function getWithFullQuery($query)
     {
         return $this->serveGet($query);
-    }
-
-
-
-
-
-    public function rowCount($items = "*", $condition = true)
-    {
-        $query = "SELECT  ". $items ." FROM $this->model WHERE ". $condition;
-        $result = $this->conn->query($query);
-        return $result->fetch_array()[0];
     }
 }

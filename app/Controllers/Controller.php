@@ -49,18 +49,27 @@ class Controller
 
 
 
-    public static function back(){
+    public static function back()
+    {
         header("location: ".$_SESSION['REDIRECT_PATH']);
     }
 
 
 
     
-    public static function sanitize($data){
+    public static function string_sanitize($data)
+    {
         $data = filter_var($data, FILTER_SANITIZE_STRING);
         $data = strip_tags($data);
         $data = htmlspecialchars($data);
         return $data;
+    }
+
+
+
+    public static function id_sanitize($id)
+    {
+        return filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
     }
 
 

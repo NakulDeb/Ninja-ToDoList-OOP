@@ -24,7 +24,7 @@ class Model extends DbConfig
     public function __construct()
     {
         parent::__construct();
-        $this->connect();
+        $this->conn = $this->connect();
         $this->model = $this->getModelName();
     }
 

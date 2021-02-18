@@ -4,27 +4,21 @@ namespace Nakul\Models\Query;
 
 trait Create
 {
-    protected $row_field = [];
-    protected $row_value = [];
-
     public function create($data)
     {
-
-        foreach ($this->fillable as $field){
-            if(!is_null($data[$field])) {
-                array_push($this->row_field, $field);
-                array_push($this->row_value, "'".$data[$field]."'");
-            }
-        }
-        
-        $field = implode(', ', $this->row_field);
-        $val = implode(', ', $this->row_value);
+        $fillable_property = $this->fillable;
+        $data = array_filter($data, function ($key) use($fillable_property){
+            return in_array($key, $fillable_property);
+        },ARRAY_FILTER_USE_KEY);
 
 
-        $sql = "INSERT INTO $this->model ($field) VALUES ($val)";
+        $query = "INSERT INTO $this->model ";
+        $query .= " (`".implode("`, `", array_keys($data))."`) ";
+        $query .= " VALUES ('".implode("', '", $data)."') ";
 
-        if($this->conn->query($sql) === false){
-            die('Insertion Error. ' . $sql. $this->conn->error);
+
+        if($this->conn->query($query) === false){
+            die('Insertion Error. ' . $query. $this->conn->error);
         }
     }
 }

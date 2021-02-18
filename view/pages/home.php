@@ -34,7 +34,7 @@
                                         <form action="/edit" method="post">
                                             <input type="hidden" name="id" value="<?php echo $post['id'] ; ?>">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="body" id="body" value="<?php echo $post['body'] ?>" autofocus>
+                                                <input type="text" class="form-control" name="body" id="body" value="<?php echo $post['body'] ?>" autocomplete="off" autofocus>
                                             </div>
                                             <button type="submit" class="d-none"></button>
                                         </form>

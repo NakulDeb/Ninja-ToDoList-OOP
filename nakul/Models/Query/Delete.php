@@ -6,6 +6,7 @@ namespace Nakul\Models\Query;
 
 trait Delete
 {
+
     private function serveDelete($query)
     {
         $result = $this->conn->query($query);
@@ -18,9 +19,15 @@ trait Delete
 
 
 
-    public function delete($condition = true)
+    public function delete($condition)
     {
-        $query = "DELETE FROM $this->model WHERE ". $condition;
+        $conditionSets = array();
+
+        foreach($condition as $key => $value) {
+            $conditionSets[] = "`".$key . "` = '" . $value . "'";
+        }
+
+        $query = "DELETE FROM $this->model WHERE " . join(" AND ", $conditionSets);
         $this->serveDelete($query);
     }
 
