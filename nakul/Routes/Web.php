@@ -1,6 +1,6 @@
 <?php
 
-namespace Nakul\Routers;
+namespace Nakul\Routes;
 
 
 
@@ -33,7 +33,7 @@ class Web
 
     
 
-    static function dispatch($action)
+    function dispatch($action)
     {
         global $routes;
         $action = trim($action, '/');
