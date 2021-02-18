@@ -17,17 +17,17 @@ class Controller
 
 
     
-    public function View($view, $parames = [])
+    public static function View($view, $parames = [])
     {
-        $renderedLayout = $this->renderLayout($parames);
-        $renderedView =  $this->renderView($view, $parames);
+        $renderedLayout = self::renderLayout($parames);
+        $renderedView =  self::renderView($view, $parames);
         return str_replace("@yield('content')", $renderedView, $renderedLayout);
     }
 
 
 
 
-    protected function renderLayout($parames)
+    protected static function renderLayout($parames)
     {
         ob_start();
         extract($parames);
@@ -38,7 +38,7 @@ class Controller
 
 
 
-    protected function renderView($view, $parems)
+    protected static function renderView($view, $parems)
     {
         ob_start();
         extract($parems);

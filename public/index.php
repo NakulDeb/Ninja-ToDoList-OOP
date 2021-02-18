@@ -12,45 +12,21 @@ use App\Controllers\PostController;
 
 
 
-Router::get("/", function (){
-    $app = new HomeController();
-    print_r($app->all());
-});
+Router::get("/", [HomeController::class, 'all']);
 
-Router::post("/create", function (){
-    $app = new PostController();
-    $app->store();
-});
+Router::post("/create", [PostController::class, 'store']);
 
-Router::post("/edit", function (){
-    $app = new PostController();
-    $app->update();
-});
+Router::post("/edit", [PostController::class, 'update']);
 
-Router::post("/delete", function (){
-    $app = new PostController();
-    $app->delete();
-});
+Router::post("/delete", [PostController::class, 'delete']);
 
-Router::post("/active-or-dactive", function (){
-    $app = new PostController();
-    $app->activeOrDactive();
-});
+Router::post("/active-or-dactive", [PostController::class, 'activeOrDactive']);
 
-Router::get("/active", function (){
-    $app = new HomeController();
-    print_r($app->active());
-});
+Router::get("/active", [HomeController::class, 'active']);
 
-Router::get("/completed", function (){
-    $app = new HomeController();
-    print_r($app->completed());
-});
+Router::get("/completed", [HomeController::class, 'completed']);
 
-Router::post("/clear-completed", function (){
-    $app = new PostController();
-    print_r($app->clearCompleted());
-});
+Router::post("/clear-completed", [PostController::class, 'clearCompleted']);
 
 
 

@@ -15,7 +15,7 @@ class Web
     }
 
 
-    static function get($action, \Closure $callback)
+    static function get($action, $callback)
     {
         global $routes;
         $action = trim($action, '/');
@@ -23,7 +23,7 @@ class Web
     }
 
 
-    static function post($action, \Closure $callback)
+    static function post($action, $callback)
     {
         global $routes;
         $action = trim($action, '/');
@@ -46,7 +46,7 @@ class Web
         }
 
         $callback = $routes[$action];
-        call_user_func($callback);
+        print_r(call_user_func($callback));
     }
 
 
