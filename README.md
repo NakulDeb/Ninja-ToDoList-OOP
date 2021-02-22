@@ -22,6 +22,12 @@ Go to the project directory and Run this command [Composer](https://getcomposer.
 $ composer dump-autoload -o
 ```
 
+And Run command [phpdotenv](https://github.com/vlucas/phpdotenv):
+
+```bash
+$ composer require vlucas/phpdotenv
+```
+
 ## Step 05 and Final
 
 To serve this project go to the project directory and Run this command
