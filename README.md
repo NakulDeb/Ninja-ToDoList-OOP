@@ -19,14 +19,9 @@ Import Database.
 Go to the project directory and Run this command [Composer](https://getcomposer.org/):
 
 ```bash
-$ composer dump-autoload -o
+$ composer install
 ```
 
-And Run command [phpdotenv](https://github.com/vlucas/phpdotenv):
-
-```bash
-$ composer require vlucas/phpdotenv
-```
 
 ## Step 05 and Final
 
